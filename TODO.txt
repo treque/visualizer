@@ -1,0 +1,38 @@
+Object stuff (described as camera)
+Rotate
+Scale
+Translate
+
+Camera stuff
+Zoom
+Rotate Yaw
+Translate
+
+UI
+Mesh selector
+PP selector
+Material seelctor
+Texture selector
+Lighting options
+Immersive no UI mode
+Raycast to select objects - opens up customization on the object (like light color/intensity/position, or the mesh position etc)
+Add button
+
+
+PP (likely doing global only)
+DOF -- diff types of blurring?
+bloom
+chromatic aberration
+vignette (ez)
+
+
+Ligthing:
+Directional, spot
+positional
+small description for everything
+
+nice to have
+light color
+shader for interactible ojects
+reflection probe for spec mats..
+
