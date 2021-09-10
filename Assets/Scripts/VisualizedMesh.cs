@@ -11,6 +11,7 @@ public class VisualizedMesh : MonoBehaviour
     MeshCollider _meshCollider;
 
     public List<Mesh> AvailableMeshes;
+    public List<Material> AvailableMaterials;
 
     void Start()
     {
