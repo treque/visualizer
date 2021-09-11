@@ -18,7 +18,6 @@ public class MeshInputManager : MonoBehaviour
     public VisualizedMesh VisualizedMesh;
     TransformData _originalMeshTransform;
 
-    Vector2 _mousePosition; // dep
     Camera _camera;
 
     public float MouseDragSpeed = 0.02f;
@@ -35,15 +34,10 @@ public class MeshInputManager : MonoBehaviour
             };
         }
     }
-    public void OnMouseMove(InputAction.CallbackContext context)
-    {
-        _mousePosition = context.ReadValue<Vector2>();
-    }
     public void ChangeMesh()
     {
         VisualizedMesh.SwitchToNextMesh();
     }
-
     public void ChangeMaterial()
     {
         VisualizedMesh.SwitchToNextMaterial();
@@ -53,17 +47,19 @@ public class MeshInputManager : MonoBehaviour
         // TODO: Constraint to volume
         if (TransformState != MeshTransformState.None && Mouse.current.leftButton.isPressed)
         {
-            Vector2 input = MouseDragSpeed * context.ReadValue<Vector2>();
+            Vector2 input = context.ReadValue<Vector2>();
             switch (TransformState)
             {
                 case MeshTransformState.Translate:
                     Vector3 up = _camera.transform.up;
                     Vector3 right = _camera.transform.right;
+                    input *= MouseDragSpeed;
                     VisualizedMesh.transform.position = VisualizedMesh.transform.position
                                                         +  (up * input.y) + (right * input.x);
                     break;
                 case MeshTransformState.Scale:
                     // hard problem 
+                    input *= MouseDragSpeed;
                     if (input.y < 0 || input.x < 0)
                         VisualizedMesh.transform.localScale = VisualizedMesh.transform.localScale
                                                         - new Vector3(input.magnitude, input.magnitude, input.magnitude);
@@ -74,8 +70,7 @@ public class MeshInputManager : MonoBehaviour
                 case MeshTransformState.Rotate:
                     up = _camera.transform.up;
                     right = _camera.transform.right;
-                    VisualizedMesh.transform.eulerAngles = VisualizedMesh.transform.eulerAngles
-                                                       - 40 * ((up * input.y) + (right * input.x));
+                    VisualizedMesh.transform.Rotate(((right * input.y) - (up * input.x)), Space.World);
                     break;
             }
         }

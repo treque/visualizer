@@ -1,0 +1,27 @@
+Difficulties:
+- Looking at the best ways to implement gestures for translation/rotation scaling:
+Could have been setting values but I wanted to try something more mathematically challenging.
+For scaling, I tried to replicate Unity's way of scaling objects in a scene but the behaviour seemed arbitrary and hard to replicate/
+
+- Looking at how the UIInputManager should be changing the transforms state (rotate or translate or scale):
+Tried to find some design patterns: mediator seemed the most fitting but in this app, only one other system is using the state.
+
+If I had more time:
+- I would have a class that would change the UI button's state when the state is being changed. Right now, I am "disabling
+ every button and enabling the pressed button. It is prone to bugs! If there are more types of transformations to add eventually, it could be problematic.
+Also, if we want to combine multiple transformations (would be weird but who knows), it would require change in multiple places in the code.
+
+- It would have been nice to have a mesh selector and a material selector in a dropdown menu. I spent a bit too much time learning the new
+Unity Input System along with the Unity UI system, which disabled me from improving the experience.
+
+- At first, I was a bit overambitious and wanted to make an interface for interactible objects, like the visualized object,
+along with some lights. That way, when the interactible objects are pressed, a menu would appear next to them to offer different types of
+interactions (changing light type, changing material...). I ended up using a more simple route in order to have time to polish the code more!
+
+- Would've liked to display my image processing skills by adding DIY post-process effects like DOF. Sadly, I had a busy week with my full-time job.
+
+- Could add a slider to customize transformation mouse speed (scale faster with mouse movement for example)
+Feedback
+It is a fun challenge as I felt like I was replicating Unity's scene view. I think it would've been better to specify what the developer should focus on.
+For example, doing the UI and figuring it out was time consuming for the little I accomplished with it. If I had to focus on displaying math skills, I would've
+alloted more time into the manipulation/UX.
