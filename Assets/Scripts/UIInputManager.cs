@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class UIInputManager : MonoBehaviour
 {
-    public MeshInputManager TransformInputManager;
+    public MeshInputManager MeshInputManager;
+    public UnityTemplateProjects.SimpleCameraController CameraController;
 
     Camera _mainCamera;
     TransformData _originalCameraTransform;
@@ -18,34 +19,45 @@ public class UIInputManager : MonoBehaviour
     }
     public void OnResetCamera()
     {
-        // being overidden by simplecameracontroller.. either fix it or drop the feature
-        _mainCamera.transform.position = _originalCameraTransform.position;
-        _mainCamera.transform.rotation = _originalCameraTransform.rotation;
+        if (CameraController)
+        {
+            CameraController.ResetCameraTransform();
+        }
     }
     public void OnResetMesh()
     {
-        TransformInputManager.ResetMesh();
+        MeshInputManager.ResetMesh();
     }
     public void OnTranslateSelected()
     {
-        if (TransformInputManager)
+        if (MeshInputManager)
         {
-            TransformInputManager.TransformState = MeshInputManager.MeshTransformState.Translate;
+            MeshInputManager.TransformState = MeshInputManager.MeshTransformState.Translate;
         }
     }
     public void OnRotateSelected()
     {
-        if (TransformInputManager)
+        if (MeshInputManager)
         {
-            TransformInputManager.TransformState = MeshInputManager.MeshTransformState.Rotate;
+            MeshInputManager.TransformState = MeshInputManager.MeshTransformState.Rotate;
         }
     }
     public void OnScaleSelected()
     {
         // find way to toggle in UI
-        if (TransformInputManager)
+        if (MeshInputManager)
         {
-            TransformInputManager.TransformState = MeshInputManager.MeshTransformState.Scale;
+            MeshInputManager.TransformState = MeshInputManager.MeshTransformState.Scale;
         }
+    }
+
+    public void OnChangeMeshSelected()
+    {
+        MeshInputManager.ChangeMesh();
+    }
+
+    public void OnChangeMaterialSelected()
+    {
+        MeshInputManager.ChangeMaterial();
     }
 }

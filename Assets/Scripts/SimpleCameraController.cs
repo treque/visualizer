@@ -8,6 +8,7 @@ namespace UnityTemplateProjects
 {
     public class SimpleCameraController : MonoBehaviour
     {
+        CameraState _originalCameraState = new CameraState();
         class CameraState
         {
             public float yaw;
@@ -113,6 +114,8 @@ namespace UnityTemplateProjects
             lookAction.Enable();
             verticalMovementAction.Enable();
             boostFactorAction.Enable();
+
+            _originalCameraState.SetFromTransform(transform);
         }
 
 #endif
@@ -287,6 +290,16 @@ namespace UnityTemplateProjects
 #else
             return Input.GetMouseButtonUp(1);
 #endif
+        }
+
+        public void ResetCameraTransform()
+        {
+            m_TargetCameraState.x = _originalCameraState.x;
+            m_TargetCameraState.y = _originalCameraState.y;
+            m_TargetCameraState.z = _originalCameraState.z;
+            m_TargetCameraState.roll = _originalCameraState.roll;
+            m_TargetCameraState.pitch = _originalCameraState.pitch;
+            m_TargetCameraState.yaw = _originalCameraState.yaw;
         }
     }
 }

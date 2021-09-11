@@ -6,14 +6,6 @@
             "id": "74b34db6-1eae-43d8-b4a6-2afabcd220fd",
             "actions": [
                 {
-                    "name": "Select",
-                    "type": "Button",
-                    "id": "3c0a5bc0-d0a6-41dd-a325-ca2c915ff9ba",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "Point",
                     "type": "Value",
                     "id": "a00da3da-77f5-49fa-9e28-f17f70f611a8",
@@ -23,25 +15,14 @@
                 },
                 {
                     "name": "Drag",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "67a09167-5b3f-4963-9889-06ba48b8f3fe",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Select",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "3bd4c83c-c1fa-44f2-9d69-a41fe50039ea",
@@ -56,7 +37,7 @@
                 {
                     "name": "",
                     "id": "dff91d0c-8036-4e6e-bf8a-87bf724b7c7d",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Mouse>/delta",
                     "interactions": "Hold(duration=0.3,pressPoint=0.5)",
                     "processors": "",
                     "groups": "Keyboard&Mouse",

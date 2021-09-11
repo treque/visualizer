@@ -6,12 +6,16 @@ public class VisualizedMesh : MonoBehaviour
 {
     // thinking of loading all the meshes outside the cube and just swapping positions
 
+    public List<Mesh> AvailableMeshes;
     Mesh _mesh;
     int _currentMeshIndex = 0;
     MeshCollider _meshCollider;
 
-    public List<Mesh> AvailableMeshes;
+
     public List<Material> AvailableMaterials;
+    Material _material;
+    int _currentMaterialIndex = 0;
+    MeshRenderer _meshRenderer;
 
     void Start()
     {
@@ -23,14 +27,8 @@ public class VisualizedMesh : MonoBehaviour
         }
 
         _meshCollider = GetComponent<MeshCollider>();
+        _meshRenderer = GetComponent<MeshRenderer>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SwitchToNextMesh()
     {
         if (_mesh && AvailableMeshes.Count != 0)
@@ -47,6 +45,15 @@ public class VisualizedMesh : MonoBehaviour
             _mesh.RecalculateBounds();
 
             if (_meshCollider) _meshCollider.sharedMesh = newMesh;
+        }
+    }
+
+    public void SwitchToNextMaterial()
+    {
+        if (_mesh && AvailableMaterials.Count != 0)
+        {
+            _currentMaterialIndex = ++_currentMaterialIndex % AvailableMaterials.Count;
+            _meshRenderer.material = AvailableMaterials[_currentMaterialIndex];
         }
     }
 }
